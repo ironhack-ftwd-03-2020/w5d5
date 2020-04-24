@@ -156,15 +156,14 @@ books.forEach(book => {
   });
 });
 
-/*
- async function writeToDB ()  {
-    for (let book of books){
-      const dbAuthor  = await Author.create(book.author);
-      book.author = dbAuthor._id;
-      await Book.create(book);
-    }
-    mongoose.connection.close();
-  };
 
-  writeToDB();
-*/
+async function writeToDB() {
+  for (let book of books) {
+    const dbAuthor = await Author.create(book.author);
+    book.author = dbAuthor._id;
+    await Book.create(book);
+  }
+  mongoose.connection.close();
+};
+
+writeToDB();
